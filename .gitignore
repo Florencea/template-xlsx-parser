@@ -1,0 +1,8 @@
+node_modules
+dist
+out
+.DS_Store
+*.log*
+.tsimp
+data/data.xlsx
+data/result.xlsx
