@@ -6,7 +6,7 @@
     "start": "node --import=tsimp/import main.ts"
   },
   "dependencies": {
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.9.0",
     "tsimp": "^2.0.12",
     "typescript": "^5.6.3",
     "xlsx": "^0.18.5"
