@@ -1,7 +1,5 @@
-import * as fs from "fs";
-import * as XLSX from "xlsx/xlsx.mjs";
-
-XLSX.set_fs(fs);
+import pkg from "xlsx";
+const { readFile, utils, writeFile } = pkg;
 
 interface InputRowT {
   col1: string;
@@ -16,8 +14,8 @@ interface OutputRowT {
 }
 
 const importXlsx = (file: string): InputRowT[] => {
-  const { Sheets, SheetNames } = XLSX.readFile(file);
-  return XLSX.utils.sheet_to_json(Sheets[SheetNames[0]]);
+  const { Sheets, SheetNames } = readFile(file);
+  return utils.sheet_to_json(Sheets[SheetNames[0]]);
 };
 
 const parse = (data: InputRowT[]): OutputRowT[] =>
@@ -29,10 +27,10 @@ const parse = (data: InputRowT[]): OutputRowT[] =>
   });
 
 const exportXlsx = (result: OutputRowT[]) => {
-  const sheet = XLSX.utils.json_to_sheet(result);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, sheet, "result");
-  XLSX.writeFile(workbook, `data/result.xlsx`);
+  const sheet = utils.json_to_sheet(result);
+  const workbook = utils.book_new();
+  utils.book_append_sheet(workbook, sheet, "result");
+  writeFile(workbook, `data/result.xlsx`);
 };
 
 const main = () => {
