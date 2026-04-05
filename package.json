@@ -10,5 +10,15 @@
     "@types/node": "^25.5.2",
     "typescript": "^6.0.2",
     "xlsx": "^0.18.5"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "error"
+    }
   }
 }
